@@ -1,0 +1,31 @@
+<h1>Статьи</h1>
+
+<?php
+        
+    foreach ($articles as $item){
+        
+        $url = $this->url('blog', array('action' => 'article', 'id' => $item->getId()));
+
+        echo "<article class='panel panel-default'>
+                <div class='page-header' style='margin-top: 17px;'>
+                    <h4 style='padding-left: 30px; font-size: 25px;'>
+                        <a style='color: black;' href='{$url}'>{$item->getTitle()}</a>
+                    </h4>
+                </div>
+                <div class='panel-body'>
+                    {$item->getShortArticle()}
+                </div>    
+                <div class='panel-footer' style='height: 60px;'>
+                    <div style='width: 300px; float=left;'>Категория: {$item->getCategory()}</div>
+                    <span style='float: right;'><a href='{$url}'>Читать далее...</a></span>
+                </div>
+            </article>";
+                
+    }
+        
+?>
+   
+<?php
+
+echo $this->paginationControl($articles, 'Sliding', 'pagination_control', array('route' => 'blog'));
+

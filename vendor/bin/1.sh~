@@ -1,0 +1,1 @@
+php doctrine-module orm:convert-mapping annotation module/Blog/src/ --namespace
